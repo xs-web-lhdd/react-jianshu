@@ -1,12 +1,14 @@
 import { GlobalStyle } from './style.js';
+import { Provider } from 'react-redux'
 import Header from './common/header/index'
+import store from './store'
 
 function App() {
   return (
-    <div className='App'>
+    <Provider store={store}>
       <Header/>
       <GlobalStyle/>
-    </div>
+    </Provider>
   )
 }
 

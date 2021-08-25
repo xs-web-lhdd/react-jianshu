@@ -47,7 +47,7 @@ export const SearchWrapper = styled.div`
   .iconfont {
     position: absolute;
     left: 310px;
-    top: 17px;
+    top: 16.5px;
     font-size: 20px;
     width: 25px;
     height: 25px;
@@ -56,6 +56,12 @@ export const SearchWrapper = styled.div`
     box-sizing: border-box;
     padding-top: 3px;
     display: block;
+    transition: all .5s;
+    &.focused {
+      background-color: #777;
+      left: 450px;
+      color: #fff;
+    }
   }
 `
 export const NavSearch = styled.input.attrs({
@@ -66,14 +72,19 @@ export const NavSearch = styled.input.attrs({
   height: 38px;
   margin-top: 9px;
   margin-left: 20px;
-  padding: 0 20px;
+  padding: 0 35px 0 20px;
   border: none;
   outline: none;
   border-radius: 19px;
   background-color: #eee;
   font-size: 14px;
+  color: #777;
+  transition: width .5s;
   &::placeholder {
     color: #999;
+  }
+  &.focused {
+    width: 300px;
   }
 `
 export const Addition = styled.div`

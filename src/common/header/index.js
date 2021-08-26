@@ -48,7 +48,7 @@ class Header extends React.Component {
   }
 
   render () {
-    const { focused, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
         {/* 引入样式 */}
@@ -63,7 +63,7 @@ class Header extends React.Component {
           </NavItem>
           <SearchWrapper>
             <NavSearch
-              onFocus={handleInputFocus}
+              onFocus={() => handleInputFocus(list)}
               onBlur={handleInputBlur}
               className={focused ? 'focused' : ''}
             ></NavSearch>
@@ -96,8 +96,10 @@ const mapStateToProps = (state)  => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus () {
-      dispatch(actionCreater.getList())
+    handleInputFocus (list) {
+      if (list.size === 0) {
+        dispatch(actionCreater.getList())
+      }
       dispatch(actionCreater.searchFocus())
     },
     handleInputBlur () {

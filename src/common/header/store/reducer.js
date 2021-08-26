@@ -20,11 +20,11 @@ export default (state = defaultState, action) => {
     return state.set('focused', false)   
   }
   if (action.type === constants.CHANGE_LIST) {
-    // return state.merge({
-    //   list: action.data,
-    //   totalPage: action.totalPage
-    // })
-    return state.set('list', action.data).set('totalPage', action.totalPage)
+    return state.merge({
+      list: action.data,
+      totalPage: action.totalPage
+    })
+    // return state.set('list', action.data).set('totalPage', action.totalPage)
   }
   if (action.type === constants.MOUSE_ENTER) {
     return state.set('mouseIn', true)

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper } from './style'
 import { GlobalStyle } from './../../assets/iconfont/iconfont';
-
+import { actionCreater }  from './store/index'
 
 const Header = (props) => {
   return (
@@ -47,16 +47,10 @@ const mapStateToProps = (state)  => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleInputFocus () {
-      const action = {
-        type: 'search_focus'
-      }
-      dispatch(action)
+      dispatch(actionCreater.searchFocus())
     },
     handleInputBlur () {
-      const action = {
-        type: 'search_blur'
-      }
-      dispatch(action)
+      dispatch(actionCreater.searchBlur())
     }
   }
 }

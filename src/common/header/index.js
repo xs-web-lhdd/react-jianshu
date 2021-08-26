@@ -1,8 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem,
+        NavSearch, Addition, Button, SearchWrapper,
+        SearchInfo, SearchInfoTitle, SearchInfoSwitch,
+        SearchInfoItem, SearchInfoList
+} from './style'
 import { GlobalStyle } from './../../assets/iconfont/iconfont';
 import { actionCreater }  from './store/index'
+
+const getListArea = (show) => {
+  if (show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          热门搜索
+          <SearchInfoSwitch>换一批</SearchInfoSwitch>
+        </SearchInfoTitle>
+        <SearchInfoList>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+        </SearchInfoList>
+      </SearchInfo>
+    )
+  } else {
+    return null
+  }
+}
 
 const Header = (props) => {
   return (
@@ -24,6 +51,7 @@ const Header = (props) => {
             className={props.focused ? 'focused' : ''}
           ></NavSearch>
           <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+          {getListArea(props.focused)}
         </SearchWrapper>
       </Nav>
       <Addition>
@@ -40,7 +68,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state)  => {
   return {
-    focused: state.header.get('focused')
+    focused: state.getIn(['header', 'focused'])
   }
 }
 

@@ -23,17 +23,17 @@ export const HomeRight = styled.div`
 `
 // Topic
 export const TopicWrapper = styled.div`
+  overflow: hidden;
   padding: 20px 0 10px 0;
   width: 100%;
-  margin-left: -18px;
+  border-bottom: 1px solid #dcdcdc;
 `
 export const TopicItem = styled.div`
   float: left;
   background: #f7f7f7;
-  height: 32px;
+  height:32px;
   margin-left: 10px;
   margin-bottom: 14px;
-  padding-right: 18px;
   line-height: 32px;
   font-size: 14px;
   border: 1px solid #dcdcdc;
@@ -44,5 +44,35 @@ export const TopicItem = styled.div`
     display: block;
     margin-right: 10px;
     float: left;
+  }
+`
+
+// List
+export const ListItem = styled.div`
+  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+  border-bottom: 1px solid #dcdcdc;
+  .pic {
+    width: 125px;
+    height: 100px;
+    display: block;
+    float: right;
+    border-radius: 10px;
+  }
+`
+export const ListInfo = styled.div`
+  width: 500px;
+  float: left;
+  .title {
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  .desc {
+    font-size: 13px;
+    line-height: 24px;
+    color: #999;
   }
 `

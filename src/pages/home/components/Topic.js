@@ -10,7 +10,7 @@ class Topic extends React.Component {
           this.props.list.map((item) => {
             return (
               <TopicItem key={item.get('id')}>
-                <img className="topic-pic" src={item.get('imgUrl')} alt={item}></img>
+                <img className="topic-pic" src={item.get('imgUrl')} alt={item.get('title')}></img>
                 {item.get('title')}
               </TopicItem>  
             )

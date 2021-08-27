@@ -5,7 +5,8 @@ const defaultState = fromJS({
   topList: [],
   articleList: [],
   recommendList: [],
-  articlePage: 1
+  articlePage: 1,
+  showScroll: false
 })
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -23,6 +24,9 @@ export default (state = defaultState, action) => {
       articleList: state.get('articleList').concat(action.list),
       articlePage: action.nextPage
     })
+  }
+  if (action.type === constants.TOGGLE_SCROLL_SHOW) {
+    return state.set('showScroll', action.show)
   }
   return state
 }

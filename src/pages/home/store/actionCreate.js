@@ -30,3 +30,8 @@ export const getMoreList = (page) => {
     dispatch(addHomeList(res.data, page + 1))
   }
 }
+
+export const toggleTopShow = (flag) => ({
+  type: constants.TOGGLE_SCROLL_SHOW,
+  show: flag
+})

@@ -4,10 +4,15 @@ import Topic from './components/Topic'
 import Write from './components/Write'
 import Recommend from './components/Recommend'
 import List from './components/List'
-import { HomeWrapper, HomeLeft, HomeRight } from './style'
-import { get } from './../../utils/request'
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style'
+import { actionCreate } from './store/index'
 
 class Home extends React.Component {
+
+  handleScrollTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     return (
       <HomeWrapper>
@@ -20,33 +25,21 @@ class Home extends React.Component {
           <Recommend></Recommend>
           <Write></Write>
         </HomeRight>
+        <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>
       </HomeWrapper>
     )
   }
 
   componentDidMount() {
-    this.getList()
-  }
-
-  getList = async () => {
-    const res = await get('/home')
-    const { topicList, articleList, recommendList } = res.data
-    const action = {
-      type: 'change_home_data',
-      topicList,
-      articleList,
-      recommendList
-    }
-    this.props.changeHomeData(action)
+    this.props.changeHomeData()
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    changeHomeData (action) {
-      dispatch(action)
-    }
+const mapDispatch = (dispatch) => ({
+  changeHomeData() {
+    const action =actionCreate.getHomeInfo()
+    dispatch(action)
   }
-}
+})
 
 export default connect(null, mapDispatch)(Home)

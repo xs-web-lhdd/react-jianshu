@@ -32,16 +32,21 @@ export const NavItem = styled.div`
   color: #333;
   &.left {
     float: left;
+    position: relative;
+    z-index: 100;
   }
   &.right {
+    position: relative;
     float: right;
     color: #969696;
+    z-index: 100;
   }
   &.active {
     color: #ea6f5a;
   }
 `
 export const SearchWrapper = styled.div`
+  z-index: 1;
   position: relative;
   .zoom {
     position: absolute;

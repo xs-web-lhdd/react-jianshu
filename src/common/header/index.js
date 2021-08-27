@@ -8,6 +8,7 @@ import { HeaderWrapper, Logo, Nav, NavItem,
 import { GlobalStyle } from './../../assets/iconfont/iconfont';
 import { actionCreater }  from './store/index'
 import { Link } from 'react-router-dom'
+import { actionCreate as LoginActionCreater } from '../../pages/login/store/index'
 
 
 class Header extends React.Component {
@@ -49,7 +50,7 @@ class Header extends React.Component {
   }
 
   render () {
-    const { focused, list, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, login, handleInputFocus, handleInputBlur, logOut } = this.props
     return (
       <HeaderWrapper>
         {/* 引入样式 */}
@@ -58,9 +59,11 @@ class Header extends React.Component {
           <Logo></Logo>
         </Link>
         <Nav>
-          <NavItem className='left active'>首页</NavItem>
+          <Link to="/"><NavItem className='left active'>首页</NavItem></Link>
           <NavItem className='left'>下载APP</NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ? <NavItem onClick={logOut} className='right'>退出</NavItem> : <Link to="/login"><NavItem className='right'>登陆</NavItem></Link>
+          }
           <NavItem className='right iconfont'>
             <i>&#xe601;</i>
           </NavItem>
@@ -93,7 +96,8 @@ const mapStateToProps = (state)  => {
     list: state.getIn((['header', 'list'])),
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
-    mouseIn: state.getIn(['header', 'mouseIn'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    login: state.getIn(['login', 'login'])
   }
 }
 
@@ -127,6 +131,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreater.changePage(0))
       }
+    },
+    logOut() {
+      dispatch(LoginActionCreater.logOut())
     }
   }
 }

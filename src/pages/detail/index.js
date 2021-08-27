@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { DetailWrapper, Header, Content } from './style'
 import { actionCreater } from './store/index'
 
-class Detail extends React.Component {
+class Detail extends React.PureComponent {
   render() {
     const { title, content } = this.props
     return (

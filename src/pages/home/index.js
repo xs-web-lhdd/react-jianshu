@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Topic from './components/Topic'
 import Write from './components/Write'
 import Recommend from './components/Recommend'
 import List from './components/List'
 import { HomeWrapper, HomeLeft, HomeRight } from './style'
+import { get } from './../../utils/request'
 
 class Home extends React.Component {
   render() {
@@ -21,6 +23,30 @@ class Home extends React.Component {
       </HomeWrapper>
     )
   }
+
+  componentDidMount() {
+    this.getList()
+  }
+
+  getList = async () => {
+    const res = await get('/home')
+    const { topicList, articleList, recommendList } = res.data
+    const action = {
+      type: 'change_home_data',
+      topicList,
+      articleList,
+      recommendList
+    }
+    this.props.changeHomeData(action)
+  }
 }
 
-export default Home
+const mapDispatch = (dispatch) => {
+  return {
+    changeHomeData (action) {
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(null, mapDispatch)(Home)

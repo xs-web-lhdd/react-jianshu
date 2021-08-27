@@ -1,9 +1,12 @@
 import React from 'react'
+import { WriteWrapper, WriteWrapperItem } from './../style'
 
 class Write extends React.Component {
   render() {
     return (
-      <div>Write</div>
+      <WriteWrapper>
+        <WriteWrapperItem>homeWork</WriteWrapperItem>
+      </WriteWrapper>
     )
   }
 }

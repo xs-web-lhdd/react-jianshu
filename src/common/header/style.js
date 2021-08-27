@@ -6,9 +6,7 @@ export const HeaderWrapper = styled.div`
   height: 56px;
   border-bottom: 1px solid #f0f0f0
 `
-export const Logo = styled.a.attrs({
-  href: '/'
-})`
+export const Logo = styled.div`
   height: 56px;
   position: absolute;
   top: 0;
@@ -28,6 +26,7 @@ export const Nav = styled.div`
 `
 export const NavItem = styled.div`
   line-height: 56px;
+  display: block;
   padding: 0 15px;
   font-size: 17px;
   color: #333;

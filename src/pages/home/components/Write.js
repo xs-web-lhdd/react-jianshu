@@ -1,7 +1,7 @@
 import React from 'react'
 import { WriteWrapper, WriteWrapperItem } from './../style'
 
-class Write extends React.Component {
+class Write extends React.PureComponent {
   render() {
     return (
       <WriteWrapper>

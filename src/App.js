@@ -10,9 +10,9 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Header/>
         <GlobalStyle/>
         <BrowserRouter>
+          <Header/>
           <div>
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/detail' component={Detail}></Route>

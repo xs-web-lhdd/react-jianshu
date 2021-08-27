@@ -7,6 +7,7 @@ import { HeaderWrapper, Logo, Nav, NavItem,
 } from './style'
 import { GlobalStyle } from './../../assets/iconfont/iconfont';
 import { actionCreater }  from './store/index'
+import { Link } from 'react-router-dom'
 
 
 class Header extends React.Component {
@@ -53,7 +54,9 @@ class Header extends React.Component {
       <HeaderWrapper>
         {/* 引入样式 */}
         <GlobalStyle></GlobalStyle> 
-        <Logo></Logo>
+        <Link to='/'>
+          <Logo></Logo>
+        </Link>
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
